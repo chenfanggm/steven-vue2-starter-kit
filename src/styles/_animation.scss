@@ -1,0 +1,18 @@
+
+/* stagger */
+.stagger-transition {
+  transition: all 1s ease;
+}
+.stagger-enter, .stagger-leave {
+  margin-left: 50rem;
+  opacity: 0;
+}
+
+/* fade */
+.fade-transition {
+  transition: all 0.5s ease;
+}
+.fade-enter, .fade-leave {
+  opacity: 0;
+  visibility: hidden;
+}
