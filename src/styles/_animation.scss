@@ -1,18 +1,20 @@
+/* fade */
+.fade-enter-active, .fade-leave-active {
+  transition: all 0.5s ease;
+}
+.fade-enter, .fade-leave-active {
+  opacity: 0;
+  visibility: hidden;
+}
 
-/* stagger */
-.stagger-transition {
+/* slide */
+.slide-enter-active, .slide-leave-active {
   transition: all 1s ease;
 }
-.stagger-enter, .stagger-leave {
+.slide-enter, .slide-leave-active {
   margin-left: 50rem;
   opacity: 0;
 }
-
-/* fade */
-.fade-transition {
-  transition: all 0.5s ease;
-}
-.fade-enter, .fade-leave {
-  opacity: 0;
-  visibility: hidden;
+.slide-move {
+  transition: transform 20s;
 }

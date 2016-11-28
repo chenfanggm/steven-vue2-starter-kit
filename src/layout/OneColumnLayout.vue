@@ -7,11 +7,11 @@
       <left-side-bar></left-side-bar>
       <div class="content-right">
         <div class="container">
-          <transition name="fade" mode="out-in">
+          <transition-fade>
             <keep-alive>
               <router-view></router-view>
             </keep-alive>
-          </transition>
+          </transition-fade>
         </div>
       </div>
     </main>

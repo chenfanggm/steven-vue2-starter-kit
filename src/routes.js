@@ -1,5 +1,4 @@
 import VueRouter from 'vue-router'
-import MainLayout from './layout/OneColumnLayout'
 import Home from './pages/Home'
 import Profile from './pages/Profile'
 import Group from './pages/Group'
@@ -11,16 +10,10 @@ export const CreateRouter = (Vue) => {
   Vue.use(VueRouter)
 
   const routes = [
-    {
-      path: '/',
-      component: MainLayout,
-      children: [
-        { path: '/', component: Home },
-        { path: '/profile', component: Profile },
-        { path: '/group', component: Group },
-        { path: '/about', component: About }
-      ]
-    }
+    { path: '/', component: Home },
+    { path: '/profile', component: Profile },
+    { path: '/group', component: Group },
+    { path: '/about', component: About }
   ]
 
   const router = new VueRouter({
