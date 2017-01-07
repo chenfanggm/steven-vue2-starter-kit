@@ -5,19 +5,19 @@
 </template>
 
 <script>
-  import { mapGetters } from 'vuex'
-
   export default {
     props: {
       feedIndex: { type: Number, required: true }
     },
+    data() {
+      return {
+        feeds: []
+      }
+    },
     computed: {
       currentFeed() {
         return this.feeds[this.feedIndex % this.feeds.length]
-      },
-      ...mapGetters({
-        feeds: 'getFeeds'
-      })
+      }
     }
   }
 </script>
