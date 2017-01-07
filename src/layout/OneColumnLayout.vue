@@ -19,13 +19,11 @@
 </template>
 
 <script>
-  import store from '../vuex/store'
   import Navbar from '../components/Navbar'
   import LeftSideBar from '../components/LeftSideBar'
 
   export default {
-    components: { Navbar, LeftSideBar },
-    store
+    components: { Navbar, LeftSideBar }
   }
 </script>
 
