@@ -1,12 +1,19 @@
-var path = require('path')
-var config = require('../config')
-var utils = require('./utils')
-var projectRoot = path.resolve(__dirname, '../')
+const path = require('path')
+const config = require('../config')
+const utils = require('./utils')
+const projectRoot = path.resolve(__dirname, '../')
 
-var env = process.env.NODE_ENV
-var cssSourceMapDev = (env === 'development' && config.dev.cssSourceMap)
-var cssSourceMapProd = (env === 'production' && config.build.productionSourceMap)
-var useCssSourceMap = cssSourceMapDev || cssSourceMapProd
+const env = process.env.NODE_ENV
+const cssSourceMapDev = (env === 'development' && config.dev.cssSourceMap)
+const cssSourceMapProd = (env === 'production' && config.build.productionSourceMap)
+const useCssSourceMap = cssSourceMapDev || cssSourceMapProd
+// define module root
+var moduleResolveRoot = []
+if (process.env.ENV_LANG) {
+  moduleResolveRoot.push(path.resolve(__dirname, '../src/i18n', _lowerCase(process.env.ENV_LANG)))
+}
+moduleResolveRoot.push(path.resolve(__dirname, '../src'))
+
 
 module.exports = {
   entry: {
@@ -22,6 +29,7 @@ module.exports = {
   },
   resolve: {
     extensions: ['', '.js', '.vue'],
+    root: moduleResolveRoot,
     fallback: [path.join(__dirname, '../node_modules')],
     alias: {
       'vue$': 'vue/dist/vue',

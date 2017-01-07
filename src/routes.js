@@ -1,8 +1,8 @@
 import VueRouter from 'vue-router'
-import Home from './pages/Home'
-import Profile from './pages/Profile'
-import Group from './pages/Group'
-import About from './pages/About'
+import Home from 'pages/Home'
+import Profile from 'pages/Profile'
+import Group from 'pages/Group'
+import About from 'pages/About'
 
 
 export const CreateRouter = (Vue) => {
