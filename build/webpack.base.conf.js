@@ -12,7 +12,7 @@ module.exports = {
   entry: {
     app: [
       'font-awesome-sass-loader',
-      './src/main.js'
+      './src/app.js'
     ]
   },
   output: {
