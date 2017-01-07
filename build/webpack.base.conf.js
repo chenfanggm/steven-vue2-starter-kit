@@ -1,3 +1,4 @@
+const _lowerCase = require('lodash/lowerCase')
 const path = require('path')
 const config = require('../config')
 const utils = require('./utils')
