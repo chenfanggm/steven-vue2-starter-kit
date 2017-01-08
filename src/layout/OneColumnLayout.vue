@@ -1,5 +1,5 @@
 <template>
-  <div class="root">
+  <div class="layout">
     <header class="header">
       <navbar></navbar>
     </header>
@@ -31,36 +31,36 @@
   @import "../styles/main";
   @import "../styles/animation";
 
-  .root {
+  .layout {
     width: 100%;
     height: 100%;
 
-  >.header {
-     width: 100%;
-   }
+    >.header {
+      width: 100%;
+    }
 
-  >.main {
-     width: 100%;
-     height: 100%;
-     padding-top: $navbar-height;
+    >.main {
+      width: 100%;
+      height: 100%;
+      padding-top: $navbar-height;
 
-  >.content-right {
-     width: 100%;
-     height: 100%;
-     display: flex;
-     justify-content: center;
-     padding-left: $left-sidebar-width;
+      >.content-right {
+        width: 100%;
+        height: 100%;
+        display: flex;
+        justify-content: center;
+        padding-left: $left-sidebar-width;
 
-  >.container {
-     width: 100%;
-     height: 100%;
-     padding: 2rem;
-   }
-  }
-  }
+        >.container {
+          width: 100%;
+          height: 100%;
+          padding: 2rem;
+        }
+      }
+    }
 
-  &.noScroll {
-     overflow: hidden;
-   }
+    &.noScroll {
+      overflow: hidden;
+    }
   }
 </style>
