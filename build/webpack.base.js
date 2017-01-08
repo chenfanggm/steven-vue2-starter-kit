@@ -7,8 +7,8 @@ const utils = require('./utils')
 
 // define module root
 var moduleResolveRoot = []
-if (process.env.ENV_LANG) {
-  moduleResolveRoot.push(path.resolve(__dirname, '../src/i18n', _lowerCase(__LANG__)))
+if (process.env.NODE_LANG) {
+  moduleResolveRoot.push(path.resolve(__dirname, '../src/i18n', _lowerCase(process.env.NODE_LANG)))
 }
 moduleResolveRoot.push(path.resolve(__dirname, '../src'))
 
