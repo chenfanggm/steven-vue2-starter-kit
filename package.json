@@ -11,8 +11,9 @@
     "npm": ">= 3.10.3"
   },
   "scripts": {
-    "dev": "node build/dev-server.js",
-    "build": "node build/build.js",
+    "dev": "node bin/dev-server.js",
+    "dev-lint": "NODE_MODE='lint' node bin/dev-server.js",
+    "build": "NODE_ENV='production' node bin/build.js",
     "unit": "karma start test/unit/karma.conf.js --single-run",
     "e2e": "node test/e2e/runner.js",
     "test": "npm run unit && npm run e2e",
@@ -42,6 +43,7 @@
     "connect-history-api-fallback": "^1.1.0",
     "cross-spawn": "^5.0.1",
     "css-loader": "^0.26.0",
+    "debug": "^2.6.0",
     "eslint": "^3.11.0",
     "eslint-config-standard": "^6.2.1",
     "eslint-friendly-formatter": "^2.0.5",

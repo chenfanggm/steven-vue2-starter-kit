@@ -1,7 +1,7 @@
 import Vue from 'vue'
 import OneColumnLayout from './layout/OneColumnLayout'
-import './transitions'
 import { CreateRouter } from './routes'
+import './transitions'
 
 
 Vue.config.devtools = !__PROD__
@@ -9,7 +9,7 @@ Vue.config.devtools = !__PROD__
 const router = CreateRouter(Vue)
 
 new Vue({
-  el: '#root',
+  el: '#app',
   components: {
     mainLayout: OneColumnLayout
   },

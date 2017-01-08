@@ -31,8 +31,10 @@ module.exports = {
     browser: true
   },
   globals: {
+    __LANG__: true,
     __DEV__: true,
-    __PROD__: true
+    __PROD__: true,
+    __NODE_API_URL__: true
   },
   plugins: [
     'html',

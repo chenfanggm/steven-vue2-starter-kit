@@ -1,53 +1,40 @@
-var path = require('path')
-var config = require('../config')
-var utils = require('./utils')
-var webpack = require('webpack')
-var merge = require('webpack-merge')
-var baseWebpackConfig = require('./webpack.base.conf')
-var ExtractTextPlugin = require('extract-text-webpack-plugin')
-var HtmlWebpackPlugin = require('html-webpack-plugin')
-var env = process.env.NODE_ENV === 'testing'
-  ? require('../config/test.env')
-  : config.build.env
+const path = require('path')
+const config = require('../config')
+const utils = require('./utils')
+const webpack = require('webpack')
+const merge = require('webpack-merge')
+const baseWebpackConfig = require('./webpack.base.js')
+const ExtractTextPlugin = require('extract-text-webpack-plugin')
+const HtmlWebpackPlugin = require('html-webpack-plugin')
 
-var webpackConfig = merge(baseWebpackConfig, {
+
+const webpackConfig = merge(baseWebpackConfig, {
   module: {
-    loaders: utils.styleLoaders({ sourceMap: config.build.productionSourceMap, extract: true })
+    preLoaders: [
+      { test: /\.(js|vue)$/, loader: 'eslint', include: path.resolve(__dirname, '../'), exclude: /node_modules/ },
+    ],
+    loaders: utils.styleLoaders({ sourceMap: config.compiler_css_source_map, extract: true })
   },
-  devtool: config.build.productionSourceMap ? '#source-map' : false,
+  devtool: config.compiler_devtool,
   output: {
-    path: config.build.assetsRoot,
+    path: config.dist,
     filename: utils.assetsPath('js/[name].[chunkhash].js'),
     chunkFilename: utils.assetsPath('js/[id].[chunkhash].js')
   },
   vue: {
     loaders: utils.cssLoaders({
-      sourceMap: config.build.productionSourceMap,
+      sourceMap: config.compiler_css_source_map,
       extract: true
     })
   },
   plugins: [
-    // http://vuejs.github.io/vue-loader/en/workflow/production.html
-    new webpack.DefinePlugin({
-      'process.env': env,
-      __DEV__: process.env.NODE_ENV.trim() === 'development',
-      __PROD__: process.env.NODE_ENV.trim() === 'production'
-    }),
-    new webpack.optimize.UglifyJsPlugin({
-      compress: {
-        warnings: false
-      }
-    }),
+    new webpack.optimize.UglifyJsPlugin({ compress: { warnings: false } }),
     new webpack.optimize.OccurrenceOrderPlugin(),
     // extract css into its own file
     new ExtractTextPlugin(utils.assetsPath('css/[name].[contenthash].css')),
     // generate dist index.html with correct asset hash for caching.
-    // you can customize output by editing /index.html
-    // see https://github.com/ampedandwired/html-webpack-plugin
     new HtmlWebpackPlugin({
-      filename: process.env.NODE_ENV === 'testing'
-        ? 'index.html'
-        : config.build.index,
+      filename: process.env.NODE_ENV === 'testing' ? 'index.html' : config.compiler_index,
       template: './src/index.html',
       inject: true,
       minify: {
@@ -83,8 +70,8 @@ var webpackConfig = merge(baseWebpackConfig, {
   ]
 })
 
-if (config.build.productionGzip) {
-  var CompressionWebpackPlugin = require('compression-webpack-plugin')
+if (config.compiler_gzip) {
+  const CompressionWebpackPlugin = require('compression-webpack-plugin')
 
   webpackConfig.plugins.push(
     new CompressionWebpackPlugin({
@@ -92,7 +79,7 @@ if (config.build.productionGzip) {
       algorithm: 'gzip',
       test: new RegExp(
         '\\.(' +
-        config.build.productionGzipExtensions.join('|') +
+        config.compiler_gzip_extension.join('|') +
         ')$'
       ),
       threshold: 10240,
